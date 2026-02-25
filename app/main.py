@@ -2,8 +2,12 @@ from fastapi import FastAPI
 from app.database import engine, Base
 from app.models import models
 
+
 # Import all route modules
 from app.routes import user, product, order, payment
+
+from app.routes import analytics
+
 
 # Create FastAPI app
 app = FastAPI(
@@ -20,6 +24,7 @@ app.include_router(user.router)
 app.include_router(product.router)
 app.include_router(order.router)
 app.include_router(payment.router)
+app.include_router(analytics.router)
 
 # Root endpoint
 @app.get("/")
